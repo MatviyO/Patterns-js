@@ -12,5 +12,20 @@ class CarFactory {
 
     create(model, price) {
         const candidate = this.getCar(model)
+        if (candidate) {
+            return candidate
+        }
+        const newCar = new Car(model, price)
+        this.cars.push(newCar)
+        return newCar
+    }
+    getCat(model) {
+        return this.cars.find(car => car.model === model)
     }
 }
+const factory = new CarFactory()
+
+const bmwx6 = factory.create('bmw', 10000)
+
+
+
